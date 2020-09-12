@@ -7,6 +7,11 @@
 		<link rel="icon" href="data:,">
         <title>Rest API Authentication Example</title>
  
+		<!-- RC menu --
+		<link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" media="all" href="assets/3rd_party/rcmenu/assets/css/main.css">
+		<!-- !!RC menu!! -->
+
         <!-- Bootstrap 4 CSS and custom CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-colorpicker@3.0.3/dist/css/bootstrap-colorpicker.min.css" crossorigin="anonymous" />
@@ -18,6 +23,7 @@
 				apiUrl : "http://localhost/dev/WebCockpit/api/"
 			}
 		</script>
+
     </head>
 <body>
  
@@ -59,7 +65,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-colorpicker@3.0.3/dist/js/bootstrap-colorpicker.min.js"></script>
 <script src="assets/3rd_party/notifications/main.js"></script>
- 
+
+<!-- RC MENU -- 
+<script type="text/javascript" src="assets/3rd_party/rcmenu/assets/js/rcmenu.js" ></script>
+<script type="text/javascript" src="assets/3rd_party/rcmenu/assets/js/ccursor.js" ></script>
+<!-- !!RC MENU!! -->
+
+
 <script>
 var debuggingMode = false;
 // jQuery codes
@@ -305,16 +317,6 @@ $(document).ready(function(){
 		trowNewNotification(notificationLogout);
 		
 	});
-
-	// show login page
-	function showLoginPage(){
-	    // remove jwt
-	    setCookie("jwt", "", 1);
-		$("#content").load("templates/users/login.temp.html");
-	    clearResponse();
-	    showLoggedOutMenu();
-		history.pushState(null, 'Login Page', 'login')
-	}
 	 
 	// function to set cookie
 	function setCookie(cname, cvalue, exdays) {
@@ -674,6 +676,18 @@ function show_register_form(){
 		showUpdateAccountForm();
 	}
 };
+
+
+
+// show login page
+function showLoginPage(){
+	// remove jwt
+	setCookie("jwt", "", 1);
+	$("#content").load("templates/users/login.temp.html");
+	clearResponse();
+	showLoggedOutMenu();
+	history.pushState(null, 'Login Page', 'login')
+}
  
 // remove any prompt messages
 function clearResponse(){
@@ -766,6 +780,26 @@ $(function(){
 			//return false;
 		});
 	});
+
+
+
+// CUSTOM SIDE MENU TEST ON NAVBAR ///////////////
+/*
+	var customMenu = {  "name":"navbar", 
+                        "items":[{  "name":"<i class='fa fa-info' aria-hidden='true'></i> Go to Home Page", 
+									"func": 'open_static_page("templates/static_pages/home_page/index.php")',
+									"event_status": false,
+                                },
+                                {   "name":"<i class='fa fa-user' aria-hidden='true'></i> Open Login Page", 
+                                    "func": "showLoginPage()",
+									"event_status": false,
+                                },
+                                {   "name":"<i class='fa fa-warning' aria-hidden='true'></i> Register", 
+                                    "func": "test_remove"
+                                }]
+                            };
+	addNewMenu(customMenu);
+*/	
 </script>
  
 </body>
