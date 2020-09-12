@@ -4,9 +4,9 @@ class Database{
 
 	// specify your own database credentials
 	private $host = "localhost";
-	private $db_name = "login_testing_jwt";
-	private $username = "login_testing_jwt";
-	private $password = "login_testing_jwt";
+	private $db_name = "webcockpit_1";
+	private $username = "webcockpit_1";
+	private $password = "webcockpit_1";
 	public $con;
 
 	// get the database connection

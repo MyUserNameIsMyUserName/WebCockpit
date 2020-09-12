@@ -1,0 +1,5 @@
+# composer ignore files generated in API included files folder
+/api/included_files/composer.phar
+/api/included_files/vendor/
+/
+# end composer

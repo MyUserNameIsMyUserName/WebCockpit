@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="assets/3rd_party/notifications/main.css" crossorigin="anonymous" />
 		<script>
 			var frontConfig = {
-				apiUrl : "http://192.168.1.50:8080/dev/LoginSystemRework/[4.0.1]/api/"
+				apiUrl : "http://localhost/dev/WebCockpit/api/"
 			}
 		</script>
     </head>
@@ -168,29 +168,43 @@ $(document).ready(function(){
 		        // show dashboard page & tell the user it was a successful login
 		        //showDashboardPage();
 				$('#dashboard').click();
-				$('#response').html("<div class='alert alert-success'>Successful login.</div>");
+				//$('#response').html("<div class='alert alert-success'>Successful login.</div>");
 				
 				addCSS("body{ color: " + result.data.main_color + "; }");
 		        setCookie("main_color", result.data.main_color , 1);
 				
-				var notification5 = {
-					id: 5555,
+				var notificationLoginGood = {
+					id: 123123123,
 					theme: "default_dark",
 					type: "information",
 					animationIn: "fadeIn",
 					animationOut: "fadeOutSlideRight",
 					iconImg: "assets/3rd_party/notifications/img/duck.gif",
 					closeButton: true,
-					title: "SOMETHING HAPPENED!!",
-					message: "Your computer has been hacked...Please follow the link for more information about your data. Click <a href='#'>here</a>.",
+					title: "YEA Good Login Info!!",
+					message: "You have been granted access to stuff beyond human comprihantion. Please stay safe, take what you need from here <a href='about-us'>here</a>.",
 				}
-				trowNewNotification(notification5);
+				trowNewNotification(notificationLoginGood);
 				
 				showLoggedInMenu();
 		    },
 		    error: function(xhr, resp, text){
 			    // on error, tell the user login has failed & empty the input boxes
-			    $('#response').html("<div class='alert alert-danger'>Login failed. Email or password is incorrect.</div>");
+				//$('#response').html("<div class='alert alert-danger'>Login failed. Email or password is incorrect.</div>");
+				
+				var notificationLoginFail = {
+					id: 321321321,
+					theme: "default_dark",
+					type: "information",
+					animationIn: "fadeIn",
+					animationOut: "fadeOutSlideRight",
+					iconImg: "assets/3rd_party/notifications/img/warning.png",
+					closeButton: true,
+					title: "NO NO NO!!...",
+					message: "Login failed. Email or password is incorrect.",
+				}
+				trowNewNotification(notificationLoginFail);
+
 			    login_form.find('input').val('');
 			}
 		});
@@ -275,7 +289,20 @@ $(document).ready(function(){
 	// logout the user
 	$(document).on('click', '#logout', function(){
 	    showLoginPage();
-		$('#response').html("<div class='alert alert-info'>You are logged out.</div>");
+		//$('#response').html("<div class='alert alert-info'>You are logged out.</div>");
+		
+		var notificationLogout = {
+			id: 22222222222222222222,
+			theme: "default_dark",
+			type: "information",
+			animationIn: "fadeIn",
+			animationOut: "fadeOutSlideRight",
+			iconImg: "assets/3rd_party/notifications/img/info.png",
+			closeButton: true,
+			title: "You are logged out.",
+			message: "Please relog to see fresh data.",
+		}
+		trowNewNotification(notificationLogout);
 		
 	});
 
